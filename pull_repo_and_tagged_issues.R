@@ -1,5 +1,6 @@
 library(projmgr)
 library(dplyr)
+library(purrr)
 
 repo_name <- create_repo_ref(repo_owner = "chirunconf",
                              repo_name = "chirunconf19")
@@ -10,7 +11,7 @@ repo_issues <- get_issues(repo_name, state = "all") %>%
 keep_cols <- function(df) {
   df %>%
     as_tibble() %>%
-    select(number, title, user_login, state,
+    select(url, number, title, user_login, state,
            created_at, closed_at, body, labels_name)
 }
 
@@ -36,4 +37,4 @@ get_tagged_issues <- function(repo_owner, repo_name, label){
 }
 
 tagged_issues <- repos_with_tags %>%
-  purrr::pmap_dfr(get_tagged_issues)
+  pmap_dfr(get_tagged_issues)
