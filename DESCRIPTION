@@ -1,0 +1,22 @@
+Package: unconfissues
+Title: Unconf issue explorer
+Version: 0.0.0.9000
+Authors@R: person('Eric', 'Nantz', email = 'thercast@gmail.com', role = c('cre', 'aut'))
+Description: Explore open and closed issues in unconf projects
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    shiny,
+    DT,
+    attempt,
+    glue,
+    htmltools,
+    golem
+Remotes: 
+    Thinkr-open/golem
+RoxygenNote: 6.1.1
+URL: https://github.com/unconf-toolbox/unconfissues
+BugReports: https://github.com/unconf-toolbox/unconfissues/issues
+Suggests: 
+    testthat
