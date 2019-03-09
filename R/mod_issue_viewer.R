@@ -77,13 +77,26 @@ mod_issue_viewer <- function(input, output, session){
   })
   
   output$viewer <- renderUI({
-    tmp <- slice(issue_df(), 1)
+    #tmp <- filter(issue_df(), repo_name == "drake")
     
-    issue_fxn <- function(title, url, body) {
+    create_card <- function(df) {
+
+      bs4Card(
+        title = df$repo_name,
+        status = "primary",
+        solidHeader = TRUE,
+        closable = FALSE,
+        collapsible = TRUE,
+        collapsed = FALSE,
+        map2(df$title, df$url, ~create_accordion(.x, .y))
+      )
+    }
+    
+    create_accordion <- function(title, url) {
+      
       #tagList(
-        rand_id <- 
         bs4AccordionItem(
-          id = ns(grep("([^\\/]+$)", url)),
+          id = ns(stringr::str_extract(url, "([^/]+$)")),
           title = title,
           status = "primary",
           enurl(url, url)
@@ -93,31 +106,11 @@ mod_issue_viewer <- function(input, output, session){
       #)
     }
     
-    bs4Card(
-      title = tmp$repo_name,
-      status = "primary",
-      solidHeader = TRUE,
-      closable = FALSE,
-      collapsible = TRUE,
-      collapsed = FALSE,
-      fluidRow(
-        col_12(
-          bs4Accordion(
-            id = ns("accordion"),
-            #tagList(
-              issue_fxn(tmp$title, tmp$url, tmp$body) 
-            #)
-            
-            # bs4AccordionItem(
-            #   id = ns("according_item"),
-            #   title = tmp$title,
-            #   status = "primary",
-            #   tmp$url
-            # )
-          )
-        )
-      )
-      
+    tagList(
+      issue_df() %>%
+        group_nest(repo_owner, repo_name, keep = TRUE) %>% 
+        pull(data) %>%
+        map(create_card)
     )
   })
 }
