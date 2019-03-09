@@ -12,9 +12,19 @@ Imports:
     attempt,
     glue,
     htmltools,
-    golem
+    golem,
+    bs4Dash (>= 0.3.0),
+    shinyjs,
+    shinyWidgets,
+    projmgr (>= 0.0.0.9900),
+    dplyr,
+    shinytoastr,
+    tibble,
+    purrr
 Remotes: 
-    Thinkr-open/golem
+    Thinkr-open/golem,
+    RinteRface/bs4Dash,
+    emilyriederer/projmgr
 RoxygenNote: 6.1.1
 URL: https://github.com/unconf-toolbox/unconfissues
 BugReports: https://github.com/unconf-toolbox/unconfissues/issues
