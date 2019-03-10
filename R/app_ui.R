@@ -44,6 +44,27 @@ app_ui <- function() {
         )
       ),
       
+      controlbar = bs4DashControlbar(
+        title = "Add a repository",
+        skin = "light",
+        textInput(
+          inputId = "new_repo_owner",
+          label = "Repository owner"
+        ),
+        textInput(
+          inputId = "new_repo_name",
+          label = "Repository name"
+        ),
+        textInput(
+          inputId = "new_repo_label",
+          label = "Label used"
+        ),
+        actionButton(
+          inputId = "add_repo",
+          label = "Add repo!"
+        )
+      ),
+      
       # main body
       body = bs4DashBody(
         shinyjs::useShinyjs(),
@@ -85,7 +106,7 @@ golem_add_external_resources <- function(){
   addResourcePath(
     'www', system.file('app/www', package = 'unconfissues')
   )
- 
+  
   tagList(
     # Add here all the external resources
     # If you have a custom.css in the inst/app/www

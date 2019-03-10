@@ -7,7 +7,8 @@
 \usage{
 mod_issue_viewer_ui(id)
 
-mod_issue_viewer(input, output, session, issue_type, collapsed = TRUE)
+mod_issue_viewer(input, output, session, repos_df, issue_type,
+  collapsed = TRUE)
 }
 \arguments{
 \item{id}{shiny id}
