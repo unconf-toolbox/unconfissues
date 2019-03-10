@@ -86,7 +86,7 @@ app_ui <- function() {
                   width = 12,
                   status = "success",
                   closable = TRUE,
-                  paste("You can view the issues associated with a different GitHub repository by clicking the",  emo::ji("heavy_plus_sign"), "in the upper right corner and entering the repository details.")
+                  paste("You can add the issues associated with an additional GitHub repository by clicking the",  emo::ji("heavy_plus_sign"), "in the upper right corner and entering the repository details.")
                 )
               )
             ),
