@@ -3,8 +3,6 @@
 #' Only keep issues (no PRs) and relevant columns from pulled issues
 #'
 #' @param df 
-#'
-#' @return
 #' @export
 keep_issues_and_cols <- function(df) {
   df %>%
@@ -35,15 +33,6 @@ get_labelled_issues <- function(repo_owner, repo_name, label, ...){
                   label = label)
 }
 
-#' Get all repos for unconf
-#' 
-#' @param repositories_path
-#' 
-#' @export
-get_repos <- function(){
-  repositories <- readr::read_csv(here::here("data-raw/repositories.csv"), na = "NA")
-}
-
 #' Get all unconf issues from specified repositories
 #'
 #' @param repositories 
@@ -62,7 +51,6 @@ get_repos_issues <- function(repositories, issue_type){
 #' @param repo_name 
 #' @param label 
 #'
-#' @return
 #' @export
 add_repo <- function(repos_df, repo_owner, repo_name, label){
   new_repo <- dplyr::tibble(
