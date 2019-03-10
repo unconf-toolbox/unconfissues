@@ -14,7 +14,7 @@
 #' @export 
 #' @importFrom shiny NS tagList 
 #' @import DT
-mod_issue_viewer_ui <- function(id){
+mod_issue_viewer_ui <- function(id) {
   ns <- NS(id)
   tagList(
     uiOutput(ns('viewer'))
@@ -32,7 +32,7 @@ mod_issue_viewer_ui <- function(id){
 #' @export
 #' @keywords internal
     
-mod_issue_viewer <- function(input, output, session){
+mod_issue_viewer <- function(input, output, session, issue_type){
   ns <- session$ns
   
   issue_df <- reactive({
@@ -73,7 +73,8 @@ mod_issue_viewer <- function(input, output, session){
     }
     
     tagged_issues <- repos_with_tags %>%
-      purrr::pmap_dfr(get_tagged_issues)
+      purrr::pmap_dfr(get_tagged_issues) %>%
+      filter(state == issue_type)
     
     repo_and_tagged_issues <- repo_issues %>%
       bind_rows(tagged_issues)
@@ -83,7 +84,7 @@ mod_issue_viewer <- function(input, output, session){
   
   output$viewer <- renderUI({
     #tmp <- filter(issue_df(), repo_name == "drake")
-    
+    req(issue_df())
     create_card <- function(df) {
 
       bs4Card(
@@ -93,6 +94,7 @@ mod_issue_viewer <- function(input, output, session){
         closable = FALSE,
         collapsible = TRUE,
         collapsed = FALSE,
+        width = 12,
         map2(df$title, df$url, ~create_accordion(.x, .y))
       )
     }
@@ -111,12 +113,21 @@ mod_issue_viewer <- function(input, output, session){
       #)
     }
     
-    tagList(
-      issue_df() %>%
-        group_nest(repo_owner, repo_name, keep = TRUE) %>% 
-        pull(data) %>%
-        map(create_card)
-    )
+    if (nrow(issue_df()) < 1) {
+      res <- tagList(
+        bs4Alert(
+          title = "No closed issues yet!",
+          "Let's keep checking!"
+        )
+      )
+    } else {
+      res <- tagList(
+        issue_df() %>%
+          group_nest(repo_owner, repo_name, keep = TRUE) %>% 
+          pull(data) %>%
+          map(create_card)
+      )
+    }
   })
 }
     
