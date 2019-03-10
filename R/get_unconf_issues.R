@@ -59,6 +59,23 @@ add_repo <- function(repos_df, repo_owner, repo_name, label){
     label = label
   )
   
-  repos_df %>%
-    dplyr::bind_rows(new_repo)
+  safely_get_labelled_issues <- purrr::safely(get_labelled_issues)
+  
+  repo_error <- new_repo %>%
+    purrr::pmap(safely_get_labelled_issues) %>%
+    purrr::transpose() %>%
+    purrr::pluck("error") %>%
+    unlist() %>%
+    purrr::pluck("message")
+  
+  if(is.null(repo_error)){
+    repos_df %>%
+      dplyr::bind_rows(new_repo)
+  }
+  else if(stringr::str_detect(repo_error, "404")){
+    "404"
+  }
+  else if(repo_error == "Results object contains no elements to parse."){
+    "invalid_label"
+  }
 }
