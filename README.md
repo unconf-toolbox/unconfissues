@@ -1,5 +1,4 @@
-
-# unconfissues
+# unconfissues <img src="man/logo.png" align="right" width="120" />
 
 The goal of `unconfissues` is to provide a central place for R
 unconference developers to browse open and available issues, as well as
