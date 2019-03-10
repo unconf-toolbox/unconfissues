@@ -67,9 +67,13 @@ app_ui <- function() {
             tabName = "viewer",
             fluidRow(
               col_6(
+                align = "center",
+                h3("Open Issues"),
                 mod_issue_viewer_ui("issue_viewer_open")
               ),
               col_6(
+                align = "center",
+                h3("Closed Issues"),
                 mod_issue_viewer_ui("issue_viewer_closed")
               )
             )
