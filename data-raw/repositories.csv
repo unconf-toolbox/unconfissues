@@ -1,4 +1,4 @@
-repo_owner, repo_name, label, repo_type
-"chirunconf", "chirunconf19", "", "unconf"
-"ropensci", "drake", "Chicago R Unconference", "tagged"
-"jdblischak", "workflowr", "Chicago R Unconference", "tagged"
+repo_owner, repo_name, label
+"chirunconf", "chirunconf19", ""
+"ropensci", "drake", "Chicago R Unconference"
+"jdblischak", "workflowr", "Chicago R Unconference"
