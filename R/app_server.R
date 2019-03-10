@@ -8,7 +8,6 @@ app_server <- function(input, output, session) {
   
   observeEvent(
     eventExpr = input$add_repo, {
-      browser()
       repos_with_new_df <- add_repo(
         repos_df(),
         input$new_repo_owner,
