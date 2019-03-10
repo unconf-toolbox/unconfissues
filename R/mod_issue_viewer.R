@@ -32,7 +32,7 @@ mod_issue_viewer_ui <- function(id) {
 #' @export
 #' @keywords internal
     
-mod_issue_viewer <- function(input, output, session, issue_type){
+mod_issue_viewer <- function(input, output, session, issue_type, collapsed = TRUE){
   ns <- session$ns
   
   issue_df <- reactive({
@@ -73,11 +73,11 @@ mod_issue_viewer <- function(input, output, session, issue_type){
     }
     
     tagged_issues <- repos_with_tags %>%
-      purrr::pmap_dfr(get_tagged_issues) %>%
-      filter(state == issue_type)
+      purrr::pmap_dfr(get_tagged_issues) 
     
     repo_and_tagged_issues <- repo_issues %>%
-      bind_rows(tagged_issues)
+      bind_rows(tagged_issues) %>%
+      filter(state == issue_type)
     
     return(repo_and_tagged_issues)
   })
@@ -93,7 +93,7 @@ mod_issue_viewer <- function(input, output, session, issue_type){
         solidHeader = TRUE,
         closable = FALSE,
         collapsible = TRUE,
-        collapsed = FALSE,
+        collapsed = collapsed,
         width = 12,
         map2(df$title, df$url, ~create_accordion(.x, .y))
       )
