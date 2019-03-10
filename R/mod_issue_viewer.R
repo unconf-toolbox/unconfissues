@@ -53,15 +53,22 @@ mod_issue_viewer <- function(input, output, session, repos_df, issue_type, colla
         collapsible = TRUE,
         collapsed = collapsed,
         width = 12,
-        map2(df$title, df$url, ~create_accordion(.x, .y))
+        pmap(list(title = df$title, url = df$url, state = df$state), function(title, url, state) create_accordion(title, url, state))
       )
     }
     
-    create_accordion <- function(title, url) {
+    create_accordion <- function(title, url, state = "open") {
+      
+      status_val <- switch(
+        state,
+        open = "info",
+        closed = "warning"
+      )
+      
       bs4AccordionItem(
         id = ns(stringr::str_extract(url, "([^/]+$)")),
         title = title,
-        status = "primary",
+        status = status_val,
         enurl(url, url)
       )
     }

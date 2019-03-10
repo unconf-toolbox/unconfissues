@@ -1,4 +1,5 @@
 #' @import shiny
+#' @import shinyjs
 app_server <- function(input, output, session) {
   # List the first level callModules here
   
@@ -16,9 +17,14 @@ app_server <- function(input, output, session) {
       )
       
       repos_df(repos_with_new_df)
+      
+      reset("new_repo_owner")
+      reset("new_repo_name")
+      reset("new_repo_label")
     }
   )
   
   callModule(mod_issue_viewer, "issue_viewer_open", repos_df = repos_df, issue_type = "open", collapsed = TRUE)
+  
   callModule(mod_issue_viewer, "issue_viewer_closed", repos_df = repos_df, issue_type = "closed", collapsed = FALSE)
 }
