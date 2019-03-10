@@ -14,10 +14,11 @@
 #' @export 
 #' @importFrom shiny NS tagList 
 #' @import DT
+#' @import shinycustomloader
 mod_issue_viewer_ui <- function(id) {
   ns <- NS(id)
   tagList(
-    uiOutput(ns('viewer'))
+    uiOutput(ns('viewer')) %>% withLoader(type = "html", loader = "dnaspin")
   )
 }
 

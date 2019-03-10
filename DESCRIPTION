@@ -21,12 +21,15 @@ Imports:
     shinytoastr,
     tibble,
     purrr,
+    emo (>= 0.0.0.9000),
+    shinycustomloader
     readr,
     here
 Remotes: 
     Thinkr-open/golem,
     RinteRface/bs4Dash,
-    emilyriederer/projmgr
+    emilyriederer/projmgr,
+    hadley/emo
 RoxygenNote: 6.1.1
 URL: https://github.com/unconf-toolbox/unconfissues
 BugReports: https://github.com/unconf-toolbox/unconfissues/issues

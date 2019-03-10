@@ -1,5 +1,6 @@
 #' @import shiny
 #' @import bs4Dash
+#' @import emo
 app_ui <- function() {
   tagList(
     # Leave this function for adding external resources
@@ -15,8 +16,10 @@ app_ui <- function() {
       
       # navigation bar
       navbar = bs4DashNavbar(
+        "The Unconf Issue Explorer!",
         skin = "light",
         status = "success",
+        controlbarIcon = "plus",
         leftUi = NULL,
         rightUi = NULL
       ),
@@ -32,14 +35,14 @@ app_ui <- function() {
         # left sidebar menu
         bs4SidebarMenu(
           bs4SidebarMenuItem(
-            "Welcome",
-            tabName = "welcome",
-            icon = 'info'
-          ),
-          bs4SidebarMenuItem(
             "Viewer",
             tabName = "viewer",
             icon = 'table'
+          ),
+          bs4SidebarMenuItem(
+            "About",
+            tabName = "about",
+            icon = 'info'
           )
         )
       ),
@@ -73,26 +76,44 @@ app_ui <- function() {
         # Tab content
         bs4TabItems(
           
-          # welcome tab
-          bs4TabItem(
-            tabName = "welcome",
-            bs4Jumbotron(
-              title = "The Unconf Issue Explorer!",
-              lead = "Add more exciting content here",
-              status = 'success'
-            )
-          ),
-          
           # viewer tab
           bs4TabItem(
             tabName = "viewer",
             fluidRow(
+              col_12(
+                bs4Alert(
+                  title = "Welcome to the Unconf Issue Explorer!",
+                  width = 12,
+                  status = "success",
+                  closable = TRUE,
+                  paste("You can view the issues associated with a different GitHub repository by clicking the",  emo::ji("heavy_plus_sign"), "in the upper right corner and entering the repository details.")
+                )
+              )
+            ),
+            fluidRow(
               col_6(
+                align = "center",
+                h3("Open Issues"),
                 mod_issue_viewer_ui("issue_viewer_open")
               ),
               col_6(
+                align = "center",
+                h3("Closed Issues"),
                 mod_issue_viewer_ui("issue_viewer_closed")
               )
+            )
+          ),
+          
+          # about tab
+          # welcome tab
+          bs4TabItem(
+            tabName = "about",
+            bs4Jumbotron(
+              title = "The Unconf Issue Explorer!",
+              btn_name = "View Unconf GitHub Org",
+              href = "https://github.com/chirunconf",
+              lead = "Add more exciting content here",
+              status = 'success'
             )
           )
         )
