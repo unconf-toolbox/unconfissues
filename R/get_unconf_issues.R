@@ -22,7 +22,7 @@ keep_issues_and_cols <- function(df) {
 #' @param ... 
 #'
 #' @export
-get_labelled_issues <- function(repo_owner, repo_name, label, ...){
+get_labelled_issues <- function(repo_owner, repo_name, label){
   projmgr::get_issues(
     projmgr::create_repo_ref(repo_owner, repo_name),
     labels = label,
@@ -68,8 +68,7 @@ add_repo <- function(repos_df, repo_owner, repo_name, label){
   new_repo <- dplyr::tibble(
     repo_owner = repo_owner,
     repo_name = repo_name,
-    label = label,
-    repo_type = "tagged"
+    label = label
   )
   
   repos_df %>%
