@@ -194,7 +194,7 @@ rep_br <- function(times = 1) {
 #' enurl("https://www.thinkr.fr", "ThinkR")
 
 enurl <- function(url, text){
-  tags$a(href = url, text)
+  tags$a(href = url, text, target = "_blank")
 }
 
 
