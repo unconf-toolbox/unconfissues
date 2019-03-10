@@ -2,48 +2,25 @@
 output: github_document
 ---
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-
-```{r setup, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  fig.path = "man/figures/README-",
-  out.width = "100%"
-)
-```
 # unconfissues
 
-The goal of unconfissues is to ...
+The goal of `unconfissues` is to provide a central place for R unconference developers to browse open and available issues, as well as to celebrate the work done on closed issues.
 
 ## Installation
 
-You can install the released version of unconfissues from [CRAN](https://CRAN.R-project.org) with:
+The development version of `unconfissues` is available from GitHub:
 
-``` r
-install.packages("unconfissues")
+```{r, eval=FALSE}
+# install.packages("devtools")
+devtools::install_github("unconf-toolbox/unconfissues")
 ```
 
-## Example
+## Usage
 
-This is a basic example which shows you how to solve a common problem:
+To run the sample [chirunconf19](https://chirunconf.github.io/) app:
 
-```{r example}
-## basic example code
+```{r, eval=FALSE}
+unconfissues::run_app()
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
-
-```{r cars}
-summary(cars)
-```
-
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date.
-
-You can also embed plots, for example:
-
-```{r pressure, echo = FALSE}
-plot(pressure)
-```
-
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub!
+Note that running the app requires a GitHub Personal Access Token (PAT). Instructions are available via thr [`projmgr` package](https://emilyriederer.github.io/projmgr/articles/github-pat.html).

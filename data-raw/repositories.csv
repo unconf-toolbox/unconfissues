@@ -1,4 +1,2 @@
-repo_owner, repo_name, label
-"chirunconf", "chirunconf19", ""
-"ropensci", "drake", "Chicago R Unconference"
-"jdblischak", "workflowr", "Chicago R Unconference"
+repo_owner,repo_name,label
+"chirunconf","chirunconf19",""
