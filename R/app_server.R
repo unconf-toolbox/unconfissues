@@ -1,4 +1,5 @@
 #' @import shiny
+#' @import shinyjs
 app_server <- function(input, output, session) {
   # List the first level callModules here
   
@@ -16,6 +17,10 @@ app_server <- function(input, output, session) {
       )
       
       repos_df(repos_with_new_df)
+      
+      reset("new_repo_owner")
+      reset("new_repo_name")
+      reset("new_repo_label")
     }
   )
   
