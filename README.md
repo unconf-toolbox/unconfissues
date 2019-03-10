@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# unconfissues
+# unconfissues <img src="man/logo.png" align="right" width="120" />
 
 The goal of unconfissues is to …
 
