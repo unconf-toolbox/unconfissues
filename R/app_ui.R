@@ -66,8 +66,11 @@ app_ui <- function() {
           bs4TabItem(
             tabName = "viewer",
             fluidRow(
-              col_12(
-                mod_issue_viewer_ui("issue_viewer_ui_1")
+              col_6(
+                mod_issue_viewer_ui("issue_viewer_open")
+              ),
+              col_6(
+                mod_issue_viewer_ui("issue_viewer_closed")
               )
             )
           )

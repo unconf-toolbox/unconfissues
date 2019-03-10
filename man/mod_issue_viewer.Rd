@@ -7,7 +7,7 @@
 \usage{
 mod_issue_viewer_ui(id)
 
-mod_issue_viewer(input, output, session)
+mod_issue_viewer(input, output, session, issue_type)
 }
 \arguments{
 \item{id}{shiny id}
