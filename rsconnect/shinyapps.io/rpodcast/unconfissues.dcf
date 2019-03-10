@@ -1,0 +1,10 @@
+name: unconfissues
+title:
+username:
+account: rpodcast
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 779498
+bundleId: 1929117
+url: https://rpodcast.shinyapps.io/unconfissues/
+when: 1552251461.4313

@@ -1,4 +1,5 @@
-# unconfissues <img src="man/logo.png" align="right" width="120" />
+
+# unconfissues
 
 The goal of `unconfissues` is to provide a central place for R
 unconference developers to browse open and available issues, as well as
@@ -24,3 +25,9 @@ unconfissues::run_app()
 Note that running the app requires a GitHub Personal Access Token (PAT).
 Instructions are available via thr [`projmgr`
 package](https://emilyriederer.github.io/projmgr/articles/github-pat.html).
+
+## Example
+
+You can view an example version of this application applied to the
+Chicago R Unconference 2019 by visiting
+[rpodcast.shinyapps.io/unconfissues](https://rpodcast.shinyapps.io/unconfissues)
