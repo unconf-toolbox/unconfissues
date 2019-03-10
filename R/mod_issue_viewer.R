@@ -50,7 +50,9 @@ mod_issue_viewer <- function(input, output, session){
     }
     
     repo_issues <- repo_issues %>%
-      keep_cols()
+      keep_cols() %>%
+      mutate(repo_owner = repo_name[["repo_owner"]],
+             repo_name = repo_name[["repo_name"]])
     
     repos_with_tags <- tibble::tribble(
       ~repo_owner, ~repo_name, ~label,
@@ -73,7 +75,10 @@ mod_issue_viewer <- function(input, output, session){
     tagged_issues <- repos_with_tags %>%
       purrr::pmap_dfr(get_tagged_issues)
     
-    return(tagged_issues)
+    repo_and_tagged_issues <- repo_issues %>%
+      bind_rows(tagged_issues)
+    
+    return(repo_and_tagged_issues)
   })
   
   output$viewer <- renderUI({
