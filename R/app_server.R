@@ -25,5 +25,6 @@ app_server <- function(input, output, session) {
   )
   
   callModule(mod_issue_viewer, "issue_viewer_open", repos_df = repos_df, issue_type = "open", collapsed = TRUE)
+  
   callModule(mod_issue_viewer, "issue_viewer_closed", repos_df = repos_df, issue_type = "closed", collapsed = FALSE)
 }

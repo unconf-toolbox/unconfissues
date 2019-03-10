@@ -4,7 +4,7 @@
 \alias{get_labelled_issues}
 \title{Get labelled issues from a specific repository}
 \usage{
-get_labelled_issues(repo_owner, repo_name, label, ...)
+get_labelled_issues(repo_owner, repo_name, label)
 }
 \arguments{
 \item{repo_owner}{}
