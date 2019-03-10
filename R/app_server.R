@@ -32,6 +32,10 @@ app_server <- function(input, output, session) {
           imageUrl = "",
           animation = TRUE
         )
+        
+        reset("new_repo_owner")
+        reset("new_repo_name")
+        reset("new_repo_label")
       }
       else if(repos_with_new_df == "invalid_label"){
         shinyalert::shinyalert(
@@ -49,11 +53,11 @@ app_server <- function(input, output, session) {
       }
       else{
         repos_df(repos_with_new_df)
+        
+        reset("new_repo_owner")
+        reset("new_repo_name")
+        reset("new_repo_label")
       }
-      
-      reset("new_repo_owner")
-      reset("new_repo_name")
-      reset("new_repo_label")
     }
   )
   
