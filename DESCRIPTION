@@ -1,7 +1,10 @@
 Package: unconfissues
 Title: Unconf issue explorer
 Version: 0.0.0.9000
-Authors@R: person('Eric', 'Nantz', email = 'thercast@gmail.com', role = c('cre', 'aut'))
+Authors@R: c(
+    person('Eric', 'Nantz', email = 'thercast@gmail.com', role = c('cre', 'aut')),
+    person("Sharla", "Gelfand", email = "sharla.gelfand@gmail.com", role = "aut")
+    )
 Description: Explore open and closed issues in unconf projects
 License: MIT + file LICENSE
 Encoding: UTF-8
