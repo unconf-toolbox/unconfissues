@@ -1,5 +1,6 @@
 #' @import shiny
 #' @import shinyjs
+#' @import shinyalert
 app_server <- function(input, output, session) {
   # List the first level callModules here
   
@@ -9,6 +10,7 @@ app_server <- function(input, output, session) {
   
   observeEvent(
     eventExpr = input$add_repo, {
+      
       repos_with_new_df <- add_repo(
         repos_df(),
         input$new_repo_owner,
@@ -16,7 +18,38 @@ app_server <- function(input, output, session) {
         input$new_repo_label
       )
       
-      repos_df(repos_with_new_df)
+      if(repos_with_new_df == "404"){
+        shinyalert::shinyalert(
+          title = "Whoops!",
+          text = "Sorry, that's not a valid GitHub repo.",
+          closeOnEsc = TRUE,
+          closeOnClickOutside = TRUE,
+          html = FALSE,
+          type = "error",
+          confirmButtonText = "I'll try again!",
+          confirmButtonCol = "#AEDEF4",
+          timer = 0,
+          imageUrl = "",
+          animation = TRUE
+        )
+      }
+      else if(repos_with_new_df == "invalid_label"){
+        shinyalert::shinyalert(
+          title = "Almost!",
+          text = "There's no issues with that label in the repo you supplied. Want to check again?",
+          closeOnEsc = TRUE,
+          closeOnClickOutside = TRUE,
+          html = FALSE,
+          type = "warning",
+          confirmButtonText = "Ok!",
+          confirmButtonCol = "#AEDEF4",
+          timer = 0,
+          imageUrl = "",
+          animation = TRUE)
+      }
+      else{
+        repos_df(repos_with_new_df)
+      }
       
       reset("new_repo_owner")
       reset("new_repo_name")

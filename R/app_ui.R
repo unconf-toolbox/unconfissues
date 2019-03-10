@@ -69,6 +69,7 @@ app_ui <- function() {
       # main body
       body = bs4DashBody(
         shinyjs::useShinyjs(),
+        shinyalert::useShinyalert(),
         shinyWidgets::chooseSliderSkin("HTML5"),
         
         # Tab content
