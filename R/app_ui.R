@@ -48,15 +48,15 @@ app_ui <- function() {
         title = "Add a repository",
         skin = "light",
         textInput(
-          inputId = "repo_owner",
+          inputId = "new_repo_owner",
           label = "Repository owner"
         ),
         textInput(
-          inputId = "repo_name",
+          inputId = "new_repo_name",
           label = "Repository name"
         ),
         textInput(
-          inputId = "label",
+          inputId = "new_repo_label",
           label = "Label used"
         ),
         actionButton(

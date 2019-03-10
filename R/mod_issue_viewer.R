@@ -33,11 +33,11 @@ mod_issue_viewer_ui <- function(id) {
 #' @export
 #' @keywords internal
 
-mod_issue_viewer <- function(input, output, session, issue_type, collapsed = TRUE){
+mod_issue_viewer <- function(input, output, session, repos_df, issue_type, collapsed = TRUE){
   ns <- session$ns
   
   issue_df <- reactive({
-    get_repos_issues("data-raw/repositories.csv", issue_type)
+    get_repos_issues(repos_df(), issue_type)
   })
   
   output$viewer <- renderUI({

@@ -4,12 +4,12 @@
 \alias{get_repos_issues}
 \title{Get all unconf issues from specified repositories}
 \usage{
-get_repos_issues(repositories_path, issue_type)
+get_repos_issues(repositories, issue_type)
 }
 \arguments{
-\item{issue_type}{}
-
 \item{repositories}{}
+
+\item{issue_type}{}
 }
 \description{
 Get all unconf issues from specified repositories
