@@ -29,6 +29,7 @@ mod_issue_viewer_ui <- function(id) {
 #' @import tibble
 #' @import purrr
 #' @import dplyr
+#' @import stringr
 #' @export
 #' @keywords internal
     
@@ -42,15 +43,16 @@ mod_issue_viewer <- function(input, output, session, issue_type, collapsed = TRU
     repo_issues <- get_issues(repo_name, state = "all") %>%
       parse_issues()
     
-    keep_cols <- function(df) {
+    keep_issues_and_cols <- function(df) {
       df %>%
         as_tibble() %>%
+        filter(str_detect(url, "issues")) %>%
         select(number, title, user_login, state, url,
                created_at, closed_at, body, labels_name)
     }
     
     repo_issues <- repo_issues %>%
-      keep_cols() %>%
+      keep_issues_and_cols() %>%
       mutate(repo_owner = repo_name[["repo_owner"]],
              repo_name = repo_name[["repo_name"]])
     
@@ -66,7 +68,7 @@ mod_issue_viewer <- function(input, output, session, issue_type, collapsed = TRU
         labels = label
       ) %>%
         parse_issues() %>%
-        keep_cols() %>%
+        keep_issues_and_cols() %>%
         mutate(repo_owner = repo_owner,
                repo_name = repo_name,
                label = label)
@@ -117,7 +119,9 @@ mod_issue_viewer <- function(input, output, session, issue_type, collapsed = TRU
       res <- tagList(
         bs4Alert(
           title = "No closed issues yet!",
-          "Let's keep checking!"
+          "Let's keep checking!",
+          width = 12,
+          closable = FALSE
         )
       )
     } else {
