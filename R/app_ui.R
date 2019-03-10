@@ -16,8 +16,10 @@ app_ui <- function() {
       
       # navigation bar
       navbar = bs4DashNavbar(
+        "The Unconf Issue Explorer!",
         skin = "light",
         status = "success",
+        controlbarIcon = "plus",
         leftUi = NULL,
         rightUi = NULL
       ),
@@ -36,6 +38,11 @@ app_ui <- function() {
             "Viewer",
             tabName = "viewer",
             icon = 'table'
+          ),
+          bs4SidebarMenuItem(
+            "About",
+            tabName = "about",
+            icon = 'info'
           )
         )
       ),
@@ -73,6 +80,19 @@ app_ui <- function() {
                 h3("Closed Issues"),
                 mod_issue_viewer_ui("issue_viewer_closed")
               )
+            )
+          ),
+          
+          # about tab
+          # welcome tab
+          bs4TabItem(
+            tabName = "about",
+            bs4Jumbotron(
+              title = "The Unconf Issue Explorer!",
+              btn_name = "View Unconf GitHub Org",
+              href = "https://github.com/chirunconf",
+              lead = "Add more exciting content here",
+              status = 'success'
             )
           )
         )

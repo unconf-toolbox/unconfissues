@@ -21,8 +21,9 @@ Imports:
     shinytoastr,
     tibble,
     purrr,
-    emo (>= 0.0.0.9000)
-Remotes:  
+    emo (>= 0.0.0.9000),
+    shinycustomloader
+Remotes: 
     Thinkr-open/golem,
     RinteRface/bs4Dash,
     emilyriederer/projmgr,

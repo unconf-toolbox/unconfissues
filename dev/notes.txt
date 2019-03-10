@@ -1,0 +1,15 @@
+twitter #chirunconf #rstats
+
+unconf toolbox:
+* tidydevday is a good sandbox to try with the GitHub API to grab these issues
+
+
+plumber and database links:
+* https://db.rstudio.com/best-practices/dashboards/
+* https://community.rstudio.com/t/writing-a-logfile-from-plumber-via-rstudio-connect/13508/2
+* https://community.rstudio.com/t/plumber-api-and-package-structure/18099/7
+* https://stackoverflow.com/questions/52722178/display-html-widget-from-plumber-api-in-shiny-application
+* https://connect.rstudioservices.com/jimhester/tidyverse_dashboard/tidyverse_dashboard.html
+* https://github.com/sckott/analogsea
+* https://rviews.rstudio.com/2018/07/23/rest-apis-and-plumber/
+* https://www.rplumber.io/docs/hosting.html
