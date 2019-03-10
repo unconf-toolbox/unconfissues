@@ -1,7 +1,24 @@
 #' @import shiny
-app_server <- function(input, output,session) {
+app_server <- function(input, output, session) {
   # List the first level callModules here
   
-  callModule(mod_issue_viewer, "issue_viewer_open", issue_type = "open", collapsed = TRUE)
-  callModule(mod_issue_viewer, "issue_viewer_closed", issue_type = "closed", collapsed = FALSE)
+  repos_df <- reactiveVal(
+    get_repos()
+  )
+  
+  observeEvent(
+    eventExpr = input$add_repo, {
+      repos_with_new_df <- add_repo(
+        repos_df(),
+        input$new_repo_owner,
+        input$new_repo_name,
+        input$new_repo_label
+      )
+      
+      repos_df(repos_with_new_df)
+    }
+  )
+  
+  callModule(mod_issue_viewer, "issue_viewer_open", repos_df = repos_df, issue_type = "open", collapsed = TRUE)
+  callModule(mod_issue_viewer, "issue_viewer_closed", repos_df = repos_df, issue_type = "closed", collapsed = FALSE)
 }
