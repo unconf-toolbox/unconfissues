@@ -21,3 +21,7 @@ To run the sample [chirunconf19](https://chirunconf.github.io/) app:
 ``` r
 unconfissues::run_app()
 ```
+
+Note that running the app requires a GitHub Personal Access Token (PAT).
+Instructions are available via thr [`projmgr`
+package](https://emilyriederer.github.io/projmgr/articles/github-pat.html).
