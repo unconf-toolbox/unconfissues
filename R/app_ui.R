@@ -29,6 +29,11 @@ app_ui <- function() {
         skin = 'light',
         status = 'info',
         brandColor = 'info',
+        title = "Unconf Issue Explorer",
+        #url = "https://www.google.fr",
+        #src = "https://adminlte.io/themes/AdminLTE/dist/img/user2-160x160.jpg",
+        url = "https://github.com/chirunconf",
+        src = "https://raw.githubusercontent.com/chirunconf/chirunconf.github.io/master/img/logo.png",
         elevation = 4,
         opacity = 0.8,
         
